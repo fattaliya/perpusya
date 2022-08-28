@@ -18,7 +18,7 @@ class CreatePeminjamenTable extends Migration
             $table->string('id_siswa');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
-            $table->date('tanggal_pengembalian');
+            $table->date('tanggal_pengembalian')->nullable();
             $table->string('id_buku');
             $table->string('status_buku');
             $table->string('status_peminjaman');
