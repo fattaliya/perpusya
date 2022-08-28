@@ -17,6 +17,7 @@ class PeminjamanController extends Controller
     }
 
     public function add(){
+
         $buku = buku::whereNotNull('id_kategori')->get();
         $data_siswa = DB::table('data_siswas')->orderBy('id','DESC')->get();
         return view('admin.peminjaman.tambah', ['buku'=>$buku,'data_siswa'=>$data_siswa]);

@@ -95,6 +95,7 @@ class DataSiswaController extends Controller
 
 
     public function edit($id){
+        
         $data_siswa= DB::table('data_siswas')->where('id',$id)->first();
 
 

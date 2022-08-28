@@ -37,7 +37,7 @@
                                     <label>Kategori</label>
                                     <select class="form-control" name="id_kategori" required>
                                       <option value="">-- Pilih Kategori --</option>
-                                      @foreach(\DB::table('kategori')->get() as $data)
+                                      @foreach(\DB::table('kategoris')->get() as $data)
                                       <option value="{{$data->id}}">{{$data->nama}}</option>
                                       @endforeach
                                     </select>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Foto</label>
-                                    <input type="file" name="foto" class="form-control" place_holder="Masukan Foto...." value="">
+                                    <input type="file" name="foto" class="form-control" place_holder="Masukan Foto...." value="{{$buku->foto}}">
                                 </div>
                                 <br>
                                 <button class="btn btn-success" type="submit">Update Data</button>

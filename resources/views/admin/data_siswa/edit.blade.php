@@ -22,21 +22,13 @@
                                 @csrf
                                 <div class="form-group mb-3">
                                     <label>NIS</label>
-                                    <input type="text" name="nis" class="form-control" place_holder="Masukan Jumlah data_siswa..." value="{{$data_siswa->nis}}">
+                                    <input type="text" name="nis" autofocus class="form-control" place_holder="Masukan Jumlah data_siswa..." value="{{$data_siswa->nis}}">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Nama Siswa</label>
                                     <input type="text" name="nama_siswa" class="form-control" place_holder="Masukan Nama data_siswa...." value="{{$data_siswa->nama_siswa}}">
                                 </div>
-                                {{-- <div class="form-group mb-3">
-                                    <label>Kelas</label>
-                                    <select class="form-control" name="id_kelas" required>
-                                      <option value="{{$kelas->id}}">{{$kelas->nama}}</option>
-                                      @foreach($kelasAll as $data)
-                                      <option value="{{$data->id}}">{{$data->nama}}</option>
-                                      @endforeach
-                                    </select>
-                                </div> --}}
+
                                 <div class="form-group mb-3">
                                     <label>Jenis Kelamin</label><br>
                                     <input type ="radio" name="jenis_kelamin" value="Laki-Laki">Laki-Laki<br>
@@ -44,20 +36,27 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Status</label>
-                                    <input type="text" name="status" class="form-control" place_holder="Masukan Nama data_siswa...." value="{{$data_siswa->status}}">
+                                    <input type="text" name="status_akun" class="form-control" place_holder="Masukan Nama data_siswa...." value="{{$data_siswa->status_akun}}">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>No WA</label>
-                                    <input type="text" name="no_wa" class="form-control" place_holder="Masukan Nama data_siswa...." value="{{$data_siswa->status}}">
+                                    <input type="text" name="no_wa" class="form-control" place_holder="Masukan Nama data_siswa...." value="{{$data_siswa->no_wa}}">
+                                </div>
+
+
+                                <div class="form-group mb-3">
+                                    <label>Kelas</label>
+                                    <textarea type="text" name="kelas" class="form-control"  placeholder="Pesan"></textarea>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label>Status Akun</label>
-                                    <input type="text" name="status_akun" class="form-control" place_holder="Masukan Nama data_siswa...." value="{{$data_siswa->status_akun}}">
-                                </div>
-                                {{-- <div class="form-group mb-3">
-                                    <label>Alamat</label>
-                                    <textarea type="text" name="alamat" class="form-control" cols="30" rows="5" placeholder="Pesan" value="{{$data_siswa->alamat}}"></textarea>
-                                </div> --}}
+                                    <label>Jurusan</label>
+                                    <select class="form-control" name="id_jurusan" required>
+                                      <option value="">-- Pilih Jurusan --</option>
+                                      @foreach(\DB::table('jurusans')->get() as $data)
+                                      <option value="{{$data->id}}">{{$data->nama_jurusan}}</option>
+                                      @endforeach
+                                    </select>
+                                 </div>
                                 <div class="form-group mb-3">
                                   <label>Foto</label>
                                   <input type="file" name="foto" class="form-control" place_holder="Masukan Foto...." value="{{$data_siswa->foto}}">

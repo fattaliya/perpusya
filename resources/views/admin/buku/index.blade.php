@@ -57,7 +57,7 @@
                                 @foreach($buku as $data)
                                 <?php
 
-                                  $kategori = DB::table('kategori')->find($data->id_kategori);
+                                  $kategori = DB::table('kategoris')->find($data->id_kategori);
 
                                 ?>
                                 <?php $sisa=0;?>

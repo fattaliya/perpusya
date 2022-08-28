@@ -36,7 +36,7 @@
                                     <label>Kategori</label>
                                     <select class="form-control" name="id_kategori" required>
                                       <option value="">-- Pilih Kategori --</option>
-                                      @foreach(\DB::table('kategori')->get() as $data)
+                                      @foreach(\DB::table('kategoris')->get() as $data)
                                       <option value="{{$data->id}}">{{$data->nama}}</option>
                                       @endforeach
                                     </select>

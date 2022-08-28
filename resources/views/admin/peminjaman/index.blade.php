@@ -45,12 +45,12 @@
                                 <?php $no = 1; ?>
                                 @foreach($peminjaman as $data)
                                 <?php
-                                  $buku = DB::table('buku')->find($data->id_buku);
+                                  $buku = DB::table('bukus')->find($data->id_buku);
                                 ?>
                                 <tr>
                                     <td>{{$no++}}</td>
                                     {{-- <td>{{$data->id_siswa}}</td> --}}
-                                    <td>{{DB::table('data_siswa')->where('id',$data->id_siswa)->value('nama_siswa')}}</td>
+                                    <td>{{DB::table('data_siswas')->where('id',$data->id_siswa)->value('nama_siswa')}}</td>
                                     <td>{{DB::table('buku')->where('id',$data->id_buku)->value('judul')}}</td>
                                     <td>{{$data->tanggal_pinjam}}</td>
                                     <td>{{$data->tanggal_kembali}}</td>

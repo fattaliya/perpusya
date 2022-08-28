@@ -104,12 +104,12 @@ class BukuController extends Controller
         // $pengarang = DB::table('pengarang')->find($buku->id_pengarang);
         // $pengarangAll = DB::table('pengarang')->where('id','!=',$pengarang->id)->orderBy('id','DESC')->get();
 
-        $kategori = DB::table('kategori')->find($buku->id_kategori);
-        $kategoriAll = DB::table('kategori')->where('id','!=',$kategori->id)->orderBy('id','DESC')->get();
+        $kategori = DB::table('kategoris')->find($buku->id_kategori);
+        $kategoriAll = DB::table('kategoris')->where('id','!=',$kategori->id)->orderBy('id','DESC')->get();
 
         // $rak = DB::table('rak')->find($buku->id_rak);
         // $rakAll = DB::table('rak')->where('id','!=',$rak->id)->orderBy('id','DESC')->get();
-        return view('admin.buku.edit',['buku'=>$buku,'kategori'=>$kategori,
+        return view('admin.buku.edit',['buku'=>$buku,'kategoris'=>$kategori,
                                         'kategoriAll'=>$kategoriAll]);
     }
 
