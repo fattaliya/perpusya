@@ -15,20 +15,20 @@ class CreateBukusTable extends Migration
     {
         Schema::create('bukus', function (Blueprint $table) {
             $table->id();
-            $table->string('nib');
-            $table->date('terima_tanggal');
+            $table->string('nib')->nullable();
+            $table->date('terima_tanggal')->nullable();
             $table->text('judul');
-            $table->string('id_kategori');
-            $table->string('pengarang');
-            $table->string('penerbit');
-            $table->string('lokasi');
-            $table->string('exp');
-            $table->string('cnb');
-            $table->string('asal_buku');
-            $table->string('tempat_terbit');
-            $table->string('stok');
-            $table->string('ketersedian');
-            $table->string('foto');
+            $table->string('id_kategori')->nullable();
+            $table->string('pengarang')->nullable();
+            $table->string('penerbit')->nullable();
+            $table->string('lokasi')->nullable();
+            $table->string('exp')->nullable();
+            $table->string('cnb')->nullable();
+            $table->string('asal_buku')->nullable();
+            $table->string('tempat_terbit')->nullable();
+            $table->string('stok')->nullable();
+            $table->string('ketersedian')->nullable();
+            $table->string('foto')->nullable();
 
             $table->timestamps();
         });

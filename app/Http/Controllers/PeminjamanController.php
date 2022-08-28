@@ -18,8 +18,25 @@ class PeminjamanController extends Controller
 
     public function add(){
 
-        $buku = buku::whereNotNull('id_kategori')->get();
-        $data_siswa = DB::table('data_siswas')->orderBy('id','DESC')->get();
+        $tgl = now();
+    // $today = today();
+    $tgl2 = $tgl->format('Y-m-d');
+        $buku = buku::whereNotNull('id_kategori')->where('ketersedian','>',0)->get();
+        // $data_siswa = DB::table('data_siswas')->where('tanggal')->orderBy('id','DESC')->get();
+    // $siswa = DataSiswa::join('peminjamen','peminjamen.id_siswa','=','data_siswas.id')
+    //     ->where('peminjamen.tanggal_pinjam',$tgl2)->count();
+    //     foreach ($siswa as $siswas){
+    //         $tgl_pinjam = $siswas->tanggal_peminjaman;
+    //     }
+        // if ($tgl_pinjam<3){
+        //     $data_siswa = $siswa;
+        // }
+        $data_siswa = DB::table('siswas')->join('peminjamen','peminjamen.id_siswa','=','siswas.id')
+    ->select(DB::raw('count(*) as tanggal_pinjam, tgl_pinjam'),'nama_siswa','id','nis','jenis_kelamin','status_akun','no_wa','id_jurusan','kelas')
+    ->where('tgl_pinjam', $tgl2)
+    ->where('status_akun',1)
+    ->groupBy('nama_siswa')
+    ->get();
         return view('admin.peminjaman.tambah', ['buku'=>$buku,'data_siswa'=>$data_siswa]);
     }
 
