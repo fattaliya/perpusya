@@ -42,9 +42,9 @@ class DataSiswaController extends Controller
     public function print_data_anggota()
     {
         $data_siswa = DB::table('data_siswas')->orderBy('id','DESC')->get();
-        return view('admin/data_siswa/print_data_anggota', compact('data_siswas'));
+        return view('admin/data_siswa/print_data_anggota', compact('data_siswa'));
     }
-    
+
 
     public function detail ($nis){
         $data_siswa = DB::table('data_siswas')->where('nis',$nis)->first();
