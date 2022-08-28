@@ -46,6 +46,11 @@ class BukuController extends Controller
         $buku = DB::table('bukus')->get();
         return view('admin.buku.cetak',['buku'=>$buku]);
     }
+    public function print()
+    {
+        $buku = DB::table('bukus')->orderBy('id','DESC')->get();
+        return view('admin/buku/print', compact('buku'));
+    }
 
 
     public function cari(Request $request)
