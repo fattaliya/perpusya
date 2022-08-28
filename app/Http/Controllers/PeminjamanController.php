@@ -28,6 +28,12 @@ class PeminjamanController extends Controller
         return view('admin/peminjaman/print_peminjaman', compact('peminjamen'));
     }
 
+    public function print()
+    {
+        $peminjaman = DB::table('peminjamen')->orderBy('id','DESC')->get();
+        return view('admin/peminjaman/print', compact('peminjamen'));
+    }
+
     public function create(Request $request)
     {
 
