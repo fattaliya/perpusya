@@ -25,7 +25,7 @@ class PeminjamanController extends Controller
     public function print_peminjaman()
     {
         $peminjaman = DB::table('peminjamen')->orderBy('id','DESC')->get();
-        return view('admin/peminjaman/print_peminjaman', compact('peminjamen'));
+        return view('admin/peminjaman/print_peminjaman', compact('peminjaman'));
     }
 
     public function print()
