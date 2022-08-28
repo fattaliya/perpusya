@@ -41,11 +41,11 @@ class PeminjamanController extends Controller
         // dd($request->all());die();
 
 
-        $data = peminjaman::create([
+        $data = Peminjaman::create([
             'id_siswa' => $request['id_siswa'],
             'tanggal_pinjam' =>$request['tanggal_pinjam'],
             'tanggal_kembali' => $request['tanggal_kembali'],
-            'tanggal_pengembalian' => $request['tanggal_pengembalian'],
+            'tanggal_pengembalian' => "0-0-0",
             'id_buku' => $request['id_buku'],
             'status_buku' => $request['status_buku'],
             'status_peminjaman' => $request['status_peminjaman'],

@@ -19,8 +19,12 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('template.index');
+})->name('index');
+
+Route::get('/cari', 'FrontController@cari');
+Route::get('/cari-buku/{kategori}', 'FrontController@cari_buku');
+Route::get('/search-auto-db', 'FrontController@searchQuery');
 
 
 
@@ -85,7 +89,7 @@ Route::get('/admin/data_siswa/print', 'datasiswaController@print');
 //Peminjaman
 Route::get('/admin/peminjaman', 'peminjamanController@read');
 Route::get('/admin/peminjaman/add', 'peminjamanController@add');
-Route::get('/admin/peminjaman/create/{id}', 'peminjamanController@create');
+Route::post('/admin/peminjaman/create', 'peminjamanController@create');
 Route::get('/admin/peminjaman/edit/{id}', 'peminjamanController@edit');
 Route::post('/admin/peminjaman/update/{id}', 'peminjamanController@update');
 Route::get('/admin/peminjaman/delete/{id}', 'peminjamanController@delete');

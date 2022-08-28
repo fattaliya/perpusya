@@ -24,7 +24,7 @@
                                     <label>Nama Peminjam</label>
                                     <select class="form-control" name="id_siswa" required>
                                     <option value="">-- Pilih Siswa --</option>
-                                     @foreach(DB::table('data_siswas')->where('status_akun',1)->get() as $data)
+                                     @foreach(DB::table('data_siswas')->where('status_akun','=','aktif')->where('status_akun','=','Aktif')->get() as $data)
                                       <option value="{{$data->id}}">{{$data->nama_siswa}}</option>
                                       @endforeach
                                     </select>
