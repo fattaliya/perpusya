@@ -62,7 +62,7 @@ class DataSiswaController extends Controller
             $name_file = 'tidak ada file.png';
         }
 
-    $data = data_siswa::create([
+    $data = datasiswa::create([
         'nis' => $request['nis'],
         'nama_siswa' =>$request['nama_siswa'],
         'jenis_kelamin' => $request['jenis_kelamin'],
@@ -99,6 +99,11 @@ class DataSiswaController extends Controller
     {
         $peminjaman = DB::table('data_siswas')->orderBy('id','DESC')->get();
         return view('admin.data_siswa.detail.print_data_siswa',['data_siswa'=>$peminjaman]);
+    }
+    public function print()
+    {
+        $data_siswa = DB::table('data_siswa')->orderBy('id','DESC')->get();
+        return view('admin/data_siswa/print', compact('data_siswa'));
     }
 
 
@@ -177,7 +182,7 @@ class DataSiswaController extends Controller
 
     public function masuk(Request $request){
 
-          $data = data_siswa::create([
+          $data = datasiswa::create([
         'nis' => $request['nis'],
         'nama_siswa' =>$request['nama_siswa'],
         'jenis_kelamin' => $request['jenis_kelamin'],
