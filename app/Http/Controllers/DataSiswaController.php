@@ -61,7 +61,7 @@ class DataSiswaController extends Controller
             $name_file = 'tidak ada file.png';
         }
 
-    $data = data_siswa::create([
+    $data = datasiswa::create([
         'nis' => $request['nis'],
         'nama_siswa' =>$request['nama_siswa'],
         'jenis_kelamin' => $request['jenis_kelamin'],
