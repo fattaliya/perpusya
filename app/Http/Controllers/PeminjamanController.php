@@ -12,7 +12,7 @@ use App\DataSiswa;
 class PeminjamanController extends Controller
 {
     public function read(){
-        $peminjaman = DB::table('peminjamans')->orderBy('id','DESC')->get();
+        $peminjaman = DB::table('peminjamen')->orderBy('id','DESC')->get();
         return view('admin.peminjaman.index', ['peminjaman'=>$peminjaman]);
     }
 
@@ -24,8 +24,8 @@ class PeminjamanController extends Controller
 
     public function print_peminjaman()
     {
-        $peminjaman = DB::table('peminjamans')->orderBy('id','DESC')->get();
-        return view('admin/peminjaman/print_peminjaman', compact('peminjamans'));
+        $peminjaman = DB::table('peminjamen')->orderBy('id','DESC')->get();
+        return view('admin/peminjaman/print_peminjaman', compact('peminjamen'));
     }
 
     public function create(Request $request)
@@ -63,7 +63,7 @@ class PeminjamanController extends Controller
 
     public function edit($id){
 
-        $peminjaman= DB::table('peminjamans')->where('id',$id)->first();
+        $peminjaman= DB::table('peminjamen')->where('id',$id)->first();
         $buku = DB::table('bukus')->find($peminjaman->id_buku);
         $bukuAll = DB::table('bukus')->where('id','!=',$buku->id)->orderBy('id','DESC')->get();
 
@@ -106,8 +106,8 @@ class PeminjamanController extends Controller
 
     public function delete($id)
     {
-        $peminjaman= DB::table('peminjamans')->where('id',$id)->first();
-        DB::table('peminjamans')->where('id',$id)->delete();
+        $peminjaman= DB::table('peminjamen')->where('id',$id)->first();
+        DB::table('peminjamen')->where('id',$id)->delete();
 
         return redirect('/admin/peminjaman')->with("success","Data Berhasil Didelete !");
     }
@@ -116,7 +116,7 @@ class PeminjamanController extends Controller
     public function kembali($data)
     {
         // dd($data);die();
-        // DB::table('peminjamans')
+        // DB::table('peminjamen')
         // ->where('id', $id)
         // ->update([
         //     'tanggal_pengembalian' => date('Y-m-d'),
@@ -127,14 +127,14 @@ class PeminjamanController extends Controller
         //     'content'   => $request->content
         // ])->where('id',$id);
         $rest = Peminjaman::find($data);
-        $buku = Buku::join('peminjamans','peminjamans.id_buku','=','bukus.id')
-        ->select('bukus.ketersedian', 'bukus.stok')->where('peminjamans.id',$data)->get();
+        $buku = Buku::join('peminjamen','peminjamen.id_buku','=','bukus.id')
+        ->select('bukus.ketersedian', 'bukus.stok')->where('peminjamen.id',$data)->get();
         foreach ($buku as $book){
             $ketersediaan = $book->ketersedian;
             $stok = $book->stok;
         }
-        $buku_update = Buku::join('peminjamans','peminjamans.id_buku','=','bukus.id')
-        ->select('bukus.ketersedian', 'bukus.stok')->where('peminjamans.id',$data)
+        $buku_update = Buku::join('peminjamen','peminjamen.id_buku','=','bukus.id')
+        ->select('bukus.ketersedian', 'bukus.stok')->where('peminjamen.id',$data)
         ->update([
             'bukus.ketersedian' => $ketersediaan + 1 ,
             'bukus.stok' => $stok + 1
@@ -164,7 +164,7 @@ class PeminjamanController extends Controller
 
 public function getdenda($id){
     // dd("jabkv");die();
-    $peminjaman= DB::table('peminjamans')->where('id',$id)->first();
+    $peminjaman= DB::table('peminjamen')->where('id',$id)->first();
     $buku = DB::table('bukus')->where('id',$peminjaman->id_buku)->first();
     $denda = DB::table('kategoris')->where('id',$buku->id_kategori)->first();
     $tgl1 =$peminjaman->tanggal_kembali;
@@ -186,7 +186,7 @@ public function denda(Request $request){
         //     $ketersediaan = $book->ketersedian;
         // }
         // dd($bukuada->ketersedian);die();
-    DB::table('peminjamans')
+    DB::table('peminjamen')
     ->where('id', $request->id)
     ->update([
         'tanggal_pengembalian' => $request->tanggal_pengembalian,
@@ -212,7 +212,7 @@ public function denda(Request $request){
 public function getKehilangan($id){
     // dd($id);die();
 
-    $peminjaman= DB::table('peminjamans')->where('id',$id)->first();
+    $peminjaman= DB::table('peminjamen')->where('id',$id)->first();
     $buku = DB::table('bukus')->where('id',$peminjaman->id_buku)->first();
     $ganti = DB::table('kategoris')->where('id',$buku->id_kategori)->first();
 
@@ -240,7 +240,7 @@ public function kehilangan(Request $request){
     ->update([
         'stok' => $bukuada->stok -1
     ]);
-    DB::table('peminjamans')
+    DB::table('peminjamen')
     ->where('id', $request->id)
     ->update([
         'tanggal_pengembalian' => $request->tanggal_lapor,
@@ -288,7 +288,7 @@ public function kehilangan(Request $request){
 
 // public function denda($id){
 
-//     $peminjaman= DB::table('peminjamans')->where('id',$id)->first();
+//     $peminjaman= DB::table('peminjamen')->where('id',$id)->first();
 
 //     $buku = DB::table('bukus')->find($peminjaman->id_buku);
 //     $bukuAll = DB::table('bukus')->where('id','!=',$buku->id)->orderBy('id','DESC')->get();
