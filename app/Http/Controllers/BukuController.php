@@ -39,7 +39,7 @@ class BukuController extends Controller
     public function print_buku()
     {
         $buku = DB::table('bukus')->orderBy('id','DESC')->get();
-        return view('admin/buku/print_buku', compact('bukus'));
+        return view('admin/buku/print_buku', compact('buku'));
     }
 
     public function cetak(){
