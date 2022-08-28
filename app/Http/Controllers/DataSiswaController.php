@@ -46,6 +46,13 @@ class DataSiswaController extends Controller
     }
 
 
+    public function print()
+    {
+        $data_siswa = DB::table('data_siswas')->orderBy('id','DESC')->get();
+        return view('admin/data_siswa/print', compact('data_siswa'));
+    }
+
+
     public function detail ($nis){
         $data_siswa = DB::table('data_siswas')->where('nis',$nis)->first();
     	return view('admin.data_siswa.detail',['data_siswa'=>$data_siswa]);
@@ -95,16 +102,6 @@ class DataSiswaController extends Controller
     }
 
 
-    public function print_data_siswa()
-    {
-        $peminjaman = DB::table('data_siswas')->orderBy('id','DESC')->get();
-        return view('admin.data_siswa.detail.print_data_siswa',['data_siswa'=>$peminjaman]);
-    }
-    public function print()
-    {
-        $data_siswa = DB::table('data_siswa')->orderBy('id','DESC')->get();
-        return view('admin/data_siswa/print', compact('data_siswa'));
-    }
 
 
     public function edit($id){
