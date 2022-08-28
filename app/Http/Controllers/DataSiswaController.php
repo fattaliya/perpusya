@@ -35,7 +35,7 @@ class DataSiswaController extends Controller
 		->paginate();
 
 
-		return view('admin.data_siswa.index',['data_siswas' => $data_siswa]);
+		return view('admin.data_siswa.index',['data_siswa' => $data_siswa]);
 
 	}
 

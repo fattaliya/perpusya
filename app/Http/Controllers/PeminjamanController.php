@@ -31,7 +31,7 @@ class PeminjamanController extends Controller
     public function print()
     {
         $peminjaman = DB::table('peminjamen')->orderBy('id','DESC')->get();
-        return view('admin/peminjaman/print', compact('peminjamen'));
+        return view('admin/peminjaman/print', compact('peminjaman'));
     }
 
     public function create(Request $request)
