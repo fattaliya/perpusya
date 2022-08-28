@@ -20,7 +20,7 @@ class CreateDataSiswasTable extends Migration
             $table->string('jenis_kelamin');
             $table->string('status_akun');
             $table->string('no_wa');
-            $table->string('id_jurusan');
+            $table->string('id_jurusan')->nullable();
             $table->string('kelas');
             $table->string('foto');
             $table->timestamps();

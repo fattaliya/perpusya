@@ -27,12 +27,9 @@ class BukuController extends Controller
     }
 
     public function add(){
-        $pengarang = DB::table('pengarang')->orderBy('id','DESC')->get();
-        $penerbit = DB::table('penerbit')->orderBy('id','DESC')->get();
-        $rak = DB::table('rak')->orderBy('nomor','DESC')->get();
-        $kategori=DB::table('kategori')->get();
 
-    	return view('admin.buku.tambah',['pengarang'=>$pengarang,'penerbit'=>$penerbit,'rak'=>$rak,'kategori'=>$kategori]);
+        $kategori = DB::table('kategoris')->orderBy('id','DESC')->get();
+    	return view('admin.buku.tambah',['kategori'=>$kategori]);
     }
 
 
@@ -47,7 +44,7 @@ class BukuController extends Controller
         $buku = DB::table('bukus')->orderBy('id','DESC')->get();
         return view('admin/buku/print', compact('buku'));
     }
-    
+
     public function cetak(){
         $buku = DB::table('bukus')->get();
         return view('admin.buku.cetak',['buku'=>$buku]);

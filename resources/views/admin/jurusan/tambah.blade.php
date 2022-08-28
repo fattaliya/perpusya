@@ -11,23 +11,20 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-11">
-                                    <h2 class="card-title text-primary">Tambah Data Denda</h2>
+                                    <h2 class="card-title text-primary">Tambah Data Jurusan</h2>
                                 </div>
                                 <div class="col-md-1">
-                                    <a href="/admin/denda" class="btn btn-md btn-block btn-primary"><i class="bx bx-left-arrow-alt"></i></a>    
+                                    <a href="/admin/jurusan" class="btn btn-md btn-block btn-primary"><i class="bx bx-left-arrow-alt"></i></a>
                                 </div>
                             </div>
                           <hr>
-                          <form action="/admin/denda/create" method="POST">
+                          <form action="/admin/jurusan/create" method="POST">
                                 @csrf
                                <div class="form-group mb-3">
-                                    <label>Keterangan</label>
-                                    <input type="text" name="keterangan" class="form-control" place_holder="Masukan Keterangan...." value="">
+                                    <label>Nama Jurusan</label>
+                                    <input type="text" name="nama_jurusan" class="form-control" place_holder="Masukan Keterangan...." value="">
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label>Jumlah Denda</label>
-                                    <input type="text" name="jumlah_denda" class="form-control" place_holder="Masukan Jumlah Denda...." value="">
-                                </div>
+
                                 <br>
                                 <button class="btn btn-primary" type="submit">Tambah Data</button>
                           </form>

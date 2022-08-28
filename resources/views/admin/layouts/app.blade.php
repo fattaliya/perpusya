@@ -155,6 +155,12 @@
                     <div data-i18n="Container">Data Anggota</div>
                   </a>
 
+
+                    <a href="/admin/jurusan" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-user"></i>
+                      <div data-i18n="Fluid">jurusan</div>
+                    </a>
+
                    {{-- <a href="/admin/kelas" class="menu-link">
                      <i class="menu-icon tf-icons bx bx-user"></i>
                     <div data-i18n="Container">Kelas</div>
@@ -177,7 +183,6 @@
               <ul class="menu-sub">
               <li class="menu-item">
                   <a href="/admin/buku" class="menu-link">
-
                     <div data-i18n="Without menu">Buku</div>
                   </a>
                 </li>
@@ -187,6 +192,8 @@
                     <div data-i18n="Fluid">Kategori</div>
                   </a>
                 </li>
+
+
                 {{-- <li class="menu-item">
                   <a href="/admin/penerbit" class="menu-link">
                     <div data-i18n="Without menu">Penerbit</div>

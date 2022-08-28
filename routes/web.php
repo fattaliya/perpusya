@@ -53,12 +53,12 @@ Route::get('/admin/kategori/delete/{id}', 'KategoriController@delete');
 
 
 //Denda
-Route::get('/admin/denda', 'dendaController@read');
-Route::get('/admin/denda/add', 'dendaController@add');
-Route::post('/admin/denda/create', 'dendaController@create');
-Route::get('/admin/denda/edit/{id}', 'dendaController@edit');
-Route::post('/admin/denda/update/{id}', 'dendaController@update');
-Route::get('/admin/denda/delete/{id}', 'dendaController@delete');
+Route::get('/admin/jurusan', 'jurusanController@read');
+Route::get('/admin/jurusan/add', 'jurusanController@add');
+Route::post('/admin/jurusan/create', 'jurusanController@create');
+Route::get('/admin/jurusan/edit/{id}', 'jurusanController@edit');
+Route::post('/admin/jurusan/update/{id}', 'jurusanController@update');
+Route::get('/admin/jurusan/delete/{id}', 'jurusanController@delete');
 
 
 //Cari Kategori
