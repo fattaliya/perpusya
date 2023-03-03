@@ -22,21 +22,14 @@ class PeminjamanController extends Controller
     // $today = today();
     $tgl2 = $tgl->format('Y-m-d');
         $buku = buku::whereNotNull('id_kategori')->where('ketersedian','>',0)->get();
-        // $data_siswa = DB::table('data_siswas')->where('tanggal')->orderBy('id','DESC')->get();
-    // $siswa = DataSiswa::join('peminjamen','peminjamen.id_siswa','=','data_siswas.id')
-    //     ->where('peminjamen.tanggal_pinjam',$tgl2)->count();
-    //     foreach ($siswa as $siswas){
-    //         $tgl_pinjam = $siswas->tanggal_peminjaman;
-    //     }
-        // if ($tgl_pinjam<3){
-        //     $data_siswa = $siswa;
-        // }
-        $data_siswa = DB::table('siswas')->join('peminjamen','peminjamen.id_siswa','=','siswas.id')
-    ->select(DB::raw('count(*) as tanggal_pinjam, tgl_pinjam'),'nama_siswa','id','nis','jenis_kelamin','status_akun','no_wa','id_jurusan','kelas')
-    ->where('tgl_pinjam', $tgl2)
-    ->where('status_akun',1)
-    ->groupBy('nama_siswa')
-    ->get();
+        $data_siswa = DB::table('data_siswas')->where('status_akun','=','Aktif')->where('status_akun','=','aktif')->orderBy('nama_siswa')->get();
+        //     $data_siswa = DB::table('data_siswas')->join('peminjamen','peminjamen.id_siswa','=','siswas.id')
+    // ->select(DB::raw('count(*) as tanggal_pinjam, tgl_pinjam'),'nama_siswa','id','nis','jenis_kelamin','status_akun','no_wa','id_jurusan','kelas')
+    // ->where('tgl_pinjam', $tgl2)
+    // ->where('status_akun','=','aktif')
+    // ->where('status_akun','=','Aktif')
+    // ->groupBy('nama_siswa')
+    // ->get();
         return view('admin.peminjaman.tambah', ['buku'=>$buku,'data_siswa'=>$data_siswa]);
     }
 
@@ -62,10 +55,10 @@ class PeminjamanController extends Controller
             'id_siswa' => $request['id_siswa'],
             'tanggal_pinjam' =>$request['tanggal_pinjam'],
             'tanggal_kembali' => $request['tanggal_kembali'],
-            'tanggal_pengembalian' => "0-0-0",
+            'tanggal_pengembalian' =>$request['tanggal_pengembalian'],
             'id_buku' => $request['id_buku'],
-            'status_buku' => $request['status_buku'],
-            'status_peminjaman' => $request['status_peminjaman'],
+            'status_buku' => "-",
+            'status_peminjaman' => "-",
 
             // $data->save()
         ]);
@@ -325,4 +318,11 @@ public function kehilangan(Request $request){
 
 //     return view('admin.peminjaman.denda',['peminjaman'=>$peminjaman,'buku'=>$buku, 'denda'=>$denda,'bukuAll'=>$bukuAll,'siswa'=>$siswa,'siswaAll'=>$siswaAll, 'dendaAll'=>$dendaAll]);
 // }
+
+
+public function reportPeminjaman(Request $request){
+    $reportPeminjaman = Peminjaman::whereBetween('tanggal_pinjam',[$request->tgl_awal,$request->tgl_akhir])->get();
+    return view('admin.peminjaman.index', ['peminjaman'=>$reportPeminjaman]);//iko buek bko kok dma ee
+
+    }
 }
